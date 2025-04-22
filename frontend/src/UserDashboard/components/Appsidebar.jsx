@@ -4,7 +4,6 @@ import {
    
   } from "@/components/ui/sidebar"
 import { CustomSidebarMenu } from "./CustomSidebarMenu"
-import { SidebarHeader } from "./SidebarHeader"
   
   export function AppSidebar() {
     return (

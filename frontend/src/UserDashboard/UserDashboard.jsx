@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Link, useLocation, Outlet } from "react-router-dom";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./components/AppSidebar";
 import { SidebarHeader } from "./components/SidebarHeader";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from "@/components/ui/breadcrumb";
 import { ChevronRight } from "lucide-react";
 import DashboardHero from "@/Dashboardhero/DashboardHero";
+import { AppSidebar } from "./components/Appsidebar";
 
 function DynamicBreadcrumb() {
   const location = useLocation();
