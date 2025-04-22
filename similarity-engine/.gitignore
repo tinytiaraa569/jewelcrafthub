@@ -1,0 +1,54 @@
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# Database
+*.sqlite3
+*.db
+
+# Test and coverage
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
+.pytest_cache/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# FastAPI specific
+*.pydantic_model.json
+
+# MySQL or Postgres files
+*.sql
+*.sql.gz
+
+# Other
+*.env
+*.db
+
+# Docker files
+docker-compose.override.yml
+docker-compose.yml
+.docker/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/

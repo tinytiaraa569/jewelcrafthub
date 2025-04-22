@@ -1,0 +1,19 @@
+.box{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    min-height: 224px;
+    max-height: 100%;
+    background-color: var(--color_3);
+    border-radius: 20px;
+    background-image: url(https://irp.cdn-website.com/md/dmtmpl/6357a8f4-9ef0-4669-ab9e-aaca72a3af93/dms3rep/multi/contact_bg_01.svg);
+    order: 0;
+    padding: 3% 3% 3% 3% !important;
+}
