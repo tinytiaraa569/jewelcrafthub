@@ -22,7 +22,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 //  Enable CORS with specific frontend origin and credentials
 app.use(
   cors({
-    origin: ["http://localhost:5173"],  // Allow only your frontend
+    origin: "https://jewelcrafthub.vercel.app",  // Allow only your frontend
     credentials: true,                // Allow cookies & auth headers
   })
 );
