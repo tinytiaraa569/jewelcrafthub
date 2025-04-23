@@ -166,11 +166,23 @@ const Homesec4 = () => {
   
 
   useEffect(() => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
+    const handleResizeOrLoad = () => {
+      if (ref.current) {
+        const rect = ref.current.getBoundingClientRect();
+        setHeight(rect.height);
+      }
+    };
+  
+    window.addEventListener("load", handleResizeOrLoad);
+    window.addEventListener("resize", handleResizeOrLoad);
+    handleResizeOrLoad();
+  
+    return () => {
+      window.removeEventListener("load", handleResizeOrLoad);
+      window.removeEventListener("resize", handleResizeOrLoad);
+    };
   }, []);
+  
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -228,6 +240,7 @@ const Homesec4 = () => {
       isStarted: true,
     },
   ];
+
 
   return (
     <div
