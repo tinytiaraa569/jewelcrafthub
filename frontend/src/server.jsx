@@ -1,4 +1,4 @@
-export const backendurl = 'http://localhost:8000/api'
+export const backendurl = 'https://backendjewelcraft.vercel.app/api'
 
 
 const isProduction = process.env.NODE_ENV === "production";
