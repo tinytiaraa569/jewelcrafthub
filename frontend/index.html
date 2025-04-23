@@ -3,13 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Preload Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <!-- Preload critical images -->
+    <link rel="preload" href="/assets/hero1-Bw215jqg.webp" as="image" type="image/webp" />
+    <link rel="preload" href="/assets/hero2.webp" as="image" type="image/webp" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Jewel Crafthub</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- Async loading of main script -->
+    <script type="module" src="/src/main.jsx" async></script>
   </body>
 </html>

@@ -13,7 +13,7 @@ const About = () => {
     <div>
        <Aboutsec1 />
        <Aboutsec2 />
-       <div  className="bg-[#ecf3f2] bg-gradient-to-br from-[#ecf3f2] via-white to-[#ecf3f2]">
+       <div className="bg-[#ecf3f2] bg-gradient-to-br from-[#ecf3f2] via-white to-[#ecf3f2]">
        <Aboutsec3 />
        </div>
        

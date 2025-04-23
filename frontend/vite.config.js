@@ -10,6 +10,7 @@ import compression2 from 'vite-plugin-compression2'
 // 🔹 Image Optimization
 import viteImagemin from 'vite-plugin-imagemin'
 
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -38,6 +39,7 @@ export default defineConfig({
         ],
       },
     }),
+
 
   ],
   resolve: {

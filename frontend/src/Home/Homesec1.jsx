@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import hero1bg from './images/hero1.webp'; // Make sure the path is correct
 import hero2bg from './images/hero2.webp'; // Make sure the path is correct
+import { useNavigate } from 'react-router-dom';
 
 
 const Homesec1 = () => {
+  const navigate = useNavigate()
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -34,7 +36,7 @@ const Homesec1 = () => {
             Welcome to the only platform built for manual jewelry designers, by jewelry industry pioneers.
             A creative space where your talent meets opportunity.
           </p>
-          <Button className="bg-[#e8fb55] text-black font-[500] hover:bg-transparent hover:text-[#e8fb55] border-2 border-transparent hover:border-[#e8fb55] transition duration-300 px-10 py-6 text-lg rounded-full">
+          <Button onClick={() => navigate("/auth")} className="cursor-pointer bg-[#e8fb55] text-black font-[500] hover:bg-transparent hover:text-[#e8fb55] border-2 border-transparent hover:border-[#e8fb55] transition duration-300 px-10 py-6 text-lg rounded-full">
             Get Started
           </Button>
         </motion.div>
@@ -50,6 +52,7 @@ const Homesec1 = () => {
             src={hero2bg}
             alt="Design Showcase"
             className="w-full h-[270px] md:h-[260px] xl:h-[550px] object-contain"
+             loading="lazy"
           />
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import hero5bg from './images/hero5.webp';
+import { useNavigate } from 'react-router-dom';
 
 const containerVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -26,6 +27,7 @@ const itemVariants = {
   };
 
 const Homesec5 = () => {
+  const navigate = useNavigate();
   const backgroundUrl = `url(${hero5bg})`;
 
   return (
@@ -59,7 +61,7 @@ const Homesec5 = () => {
         </motion.h2>
 
         <motion.div variants={itemVariants}>
-          <button className="cursor-pointer bg-[#e8fb55] text-black font-medium hover:bg-transparent hover:text-[#e8fb55] border-2 border-transparent hover:border-[#e8fb55] transition duration-300 px-8 py-2 text-base md:text-lg rounded-full shadow-lg">
+          <button onClick={() => navigate("/auth")} className="cursor-pointer bg-[#e8fb55] text-black font-medium hover:bg-transparent hover:text-[#e8fb55] border-2 border-transparent hover:border-[#e8fb55] transition duration-300 px-8 py-2 text-base md:text-lg rounded-full shadow-lg">
             Get Started
           </button>
         </motion.div>

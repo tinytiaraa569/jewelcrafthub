@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { RiCheckFill } from "react-icons/ri"; // Adding a checkmark icon
+import { useNavigate } from "react-router-dom";
 
 const Aboutsec4 = () => {
+  const navigate = useNavigate();
   return (
     <div className="py-20 px-6 md:px-12 font-poppins overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
@@ -82,10 +84,10 @@ const Aboutsec4 = () => {
             ))}
 
             <motion.button 
-                          
+                onClick={() => navigate("/auth")}
                 whileHover={{ scale: 1.06 }}
                 whileTap={{ scale: 0.94 }}
-                className="bg-[black] text-white font-semibold mt-3 px-8 py-3 rounded-full hover:bg-transparent hover:text-[black] border-2 border-[#000000] transition duration-300"
+                className="cursor-pointer bg-[black] text-white font-semibold mt-3 px-8 py-3 rounded-full hover:bg-transparent hover:text-[black] border-2 border-[#000000] transition duration-300"
                         >
                           Start Designing
                         </motion.button>

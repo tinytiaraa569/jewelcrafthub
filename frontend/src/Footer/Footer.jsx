@@ -7,9 +7,13 @@ const Footer = () => {
   const navLinks = [
     { label: 'Home', href: '/' },
     { label: 'About Us', href: '/about' },
-    { label: 'Design Brief', href: '/design-brief' },
+    { label: 'Design Brief', href: '/designs' },
     { label: 'Contact', href: '/contact' },
   ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <footer className="!overflow-hidden px-6 md:px-16 py-12 mt-16 text-gray-700 bg-[#fdfdfd]">
@@ -90,6 +94,11 @@ const Footer = () => {
         {/* Left Info */}
         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-center sm:text-left">
           <p>&copy; {new Date().getFullYear()} Jewel Craft Hub. All rights reserved.</p>
+
+          <Link to="/terms-condition" className="hover:text-black transition-colors duration-300">
+            Terms & Conditions
+          </Link>
+
           <Link to="/privacy-policy" className="hover:text-black transition-colors duration-300">
             Privacy Policy
           </Link>
@@ -101,7 +110,7 @@ const Footer = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <img src={logo} alt="logo" className="h-12 md:h-14 object-contain" />
+          <img onClick={scrollToTop} src={logo} alt="logo" className="cursor-pointer h-12 md:h-14 object-contain" />
         </motion.div>
       </div>
     </footer>

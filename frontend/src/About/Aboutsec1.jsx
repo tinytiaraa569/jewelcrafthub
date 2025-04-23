@@ -4,8 +4,10 @@ import about1bg from './images/aboutbg.webp'
 import about1img from './images/about1img.webp'
 
 import { Button } from '@/components/ui/button'
+import { useNavigate } from 'react-router-dom'
 
 const Aboutsec1 = () => {
+  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -54,7 +56,7 @@ const Aboutsec1 = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          <Button className="mt-3 cursor-pointer bg-[#e8fb55] text-black font-[500] hover:bg-transparent hover:text-[#e8fb55] border-2 border-transparent hover:border-[#e8fb55] transition duration-300 px-8 py-4 text-lg md:px-10 md:py-6 md:text-lg rounded-full">
+          <Button onClick={() => navigate("/auth")} className="mt-3 cursor-pointer bg-[#e8fb55] text-black font-[500] hover:bg-transparent hover:text-[#e8fb55] border-2 border-transparent hover:border-[#e8fb55] transition duration-300 px-8 py-4 text-lg md:px-10 md:py-6 md:text-lg rounded-full">
             Get Started
           </Button>
         </motion.div>

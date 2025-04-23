@@ -157,11 +157,13 @@ import step2img from './images/step2.webp'
 import step3img from './images/step3.webp'
 import step4img from './images/step4.webp'
 import step5img from './images/step5.webp'
+import { useNavigate } from "react-router-dom";
 
 
 const Homesec4 = () => {
   const ref = useRef(null);
   const containerRef = useRef(null);
+  const navigate = useNavigate();
   const [height, setHeight] = useState(0);
   
 
@@ -351,10 +353,11 @@ const Homesec4 = () => {
 
               {item?.isStarted && (
                 <motion.button
+                  onClick={() => navigate("/auth")}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="mt-2 px-6 py-2 bg-black hover:bg-transparent text-white hover:text-black hover:border hover:border-black font-semibold rounded-full shadow-lg transition-all"
+                  className="cursor-pointer mt-2 px-6 py-2 bg-black hover:bg-transparent text-white hover:text-black hover:border hover:border-black font-semibold rounded-full shadow-lg transition-all"
                 >
                   Get Started
                 </motion.button>
@@ -401,7 +404,7 @@ const Homesec4 = () => {
                 {item.content}
               </p>
               {item?.isStarted && (
-                <button className="mt-4 px-5 py-2 bg-black text-white rounded-full hover:bg-transparent hover:text-black hover:border hover:border-black dark:hover:bg-white dark:hover:text-black transition-all text-sm font-medium">
+                <button onClick={() => navigate("/auth")} className="mt-4 px-5 py-2 bg-black text-white rounded-full hover:bg-transparent hover:text-black hover:border hover:border-black dark:hover:bg-white dark:hover:text-black transition-all text-sm font-medium">
                   Get Started
                 </button>
               )}

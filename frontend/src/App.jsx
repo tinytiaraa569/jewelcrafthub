@@ -36,6 +36,10 @@ import AdminSupportMain from './Admin/AdminSupport/AdminSupportMain'
 import Footer from './Footer/Footer'
 import Contact from './contact/Contact'
 import Designs from './Designs/Designs'
+import PrivacyPolicy from './Policy/PrivacyPolicy'
+import Termsandcondition from './Policy/Termsandcondition'
+import NotFound from './NotFound/NotFound'
+import ScrollToTopButton from './ScrollToTopBottom/ScrollToTopButton'
 // import HeroSection from './Navbar/HeroSection'
 // import './App.css'
 
@@ -59,6 +63,11 @@ function App() {
     <Route path='/about' element={<About />} />
     <Route path='/contact' element={<Contact />} />
     <Route path='/designs' element={<Designs />} />
+
+    <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+    <Route path='/terms-condition' element={<Termsandcondition />} />
+
+
 
 
 
@@ -243,10 +252,14 @@ function App() {
           }
         />
 
+    <Route path="*" element={<NotFound />} />
+
 
       
 
     </Routes>
+
+    <ScrollToTopButton />
     
 
     {!hideNavbarPaths.includes(location.pathname) && <Footer /> }

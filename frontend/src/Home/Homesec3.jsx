@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaShieldAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const containerVariants = {
   hidden: {},
@@ -42,6 +43,7 @@ const textVariants = {
 };
 
 const Homesec3 = () => {
+  const navigate = useNavigate()
   return (
     <div className="bg-[#ecf3f2] w-full py-4 sm:py-4 md:py-6 lg:py-14">
       <div className="flex flex-col lg:flex-row justify-between items-start mx-auto max-w-screen-xl px-6 sm:px-8 py-10 sm:py-16 gap-10">
@@ -78,10 +80,11 @@ const Homesec3 = () => {
             </motion.p>
 
             <motion.button 
+              onClick={() => navigate("/auth")}
               variants={textVariants}
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.94 }}
-              className="bg-[black] text-white font-semibold mt-3 px-8 py-3 rounded-full hover:bg-transparent hover:text-[black] border-2 border-[#000000] transition duration-300"
+              className="cursor-pointer bg-[black] text-white font-semibold mt-3 px-8 py-3 rounded-full hover:bg-transparent hover:text-[black] border-2 border-[#000000] transition duration-300"
             >
               Start Designing
             </motion.button>

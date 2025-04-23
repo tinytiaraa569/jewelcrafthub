@@ -8,7 +8,7 @@ import { useTheme } from "@/components/ui/ThemeProvider";
 import { backendurl } from "@/server";
 import { toast } from "sonner";
 import { CheckCircle, UserPlus } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyAuth } from "@/redux/slices/authSlice";
 import { GoogleLogin } from "@react-oauth/google";
@@ -27,6 +27,10 @@ const AuthForm = () => {
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -34,6 +38,11 @@ const AuthForm = () => {
 
   const onSubmit = async (data) => {
     const endpoint = isLogin ? "/auth/login" : "/auth/signup";
+
+    if (!isLogin && !data.acceptTerms) {
+      toast.error("You must accept the Terms & Conditions and Privacy Policy to sign up.");
+      return;
+    }
   
   try {
     const response = await fetch(`${backendurl}${endpoint}`, {
@@ -105,7 +114,7 @@ const AuthForm = () => {
   
 
   return (
-    <div className="flex justify-center items-center min-h-[90vh] bg-gray-100 dark:bg-gray-900 p-4 transition-colors duration-300">
+    <div className="flex justify-center items-center min-h-[90vh] bg-[#ecf3f2] bg-gradient-to-br from-[#ecf3f2] via-white to-[#ecf3f2]  p-4 transition-colors duration-300">
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -181,7 +190,7 @@ const AuthForm = () => {
                   className="dark:bg-gray-700 dark:text-white"
                 />
                 {errors.name && (
-                  <p className="text-red-500 text-sm mt-1 pl-1">Name is required</p>
+                  <p className="text-red-500 text-sm  pl-1">Name is required</p>
                 )}
               </div>
             )}
@@ -196,7 +205,8 @@ const AuthForm = () => {
                 <p className="text-red-500 text-sm mt-1 pl-1">Email is required</p>
               )}
             </div>
-            <div className="relative">
+            <div className="space-y-1">
+              <div className="relative">
                 <Input
                   type={showPassword ? "text" : "password"} // Toggle between text and password type
                   placeholder="Password"
@@ -208,13 +218,51 @@ const AuthForm = () => {
                   onClick={() => setShowPassword(!showPassword)} // Toggle password visibility on click
                   className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
                 >
-                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </span>
-                {errors.password && (
-                  <p className="text-red-500 text-sm  pl-1">Password must be at least 6 characters</p>
-                )}
-               
               </div>
+              
+              {/* Error message */}
+              {errors.password && (
+                <p className="text-red-500 text-sm pl-1">{errors.password.message || "Password must be at least 6 characters"}</p>
+              )}
+            </div>
+
+              {!isLogin && (
+            <div className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
+              <input
+                type="checkbox"
+                {...register("acceptTerms", { required: true })}
+                className="mt-1 cursor-pointer accent-blue-600"
+              />
+              <label htmlFor="acceptTerms" className="flex flex-row">
+                I accept the&nbsp;
+                <span className="inline-flex gap-1">
+                  <Link
+                    to="/terms-condition"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Terms & Conditions
+                  </Link>
+                  and
+                  <Link
+                    to="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    Privacy Policy
+                  </Link>
+                </span>
+              </label>
+            </div>
+          )}
+
+          {errors.acceptTerms && (
+            <p className="text-red-500 text-sm mt-1 pl-1">You must accept the terms and policy</p>
+          )}
              
            
 
