@@ -104,6 +104,7 @@ from tensorflow.keras.applications import ResNet50
 import uvicorn
 import pickle
 import io
+import os
 
 app = FastAPI()
 
@@ -192,4 +193,5 @@ async def match(file: UploadFile = File(...)):
     return {"matches": results}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5001)
+    port = int(os.environ.get("PORT", 8000))  # Render sets PORT env variable automatically
+    uvicorn.run(app, host="0.0.0.0", port=port)
