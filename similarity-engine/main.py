@@ -191,7 +191,7 @@ async def match(file: UploadFile = File(...)):
             break  # top 3 unique matches
 
     return {"matches": results}
-
+        
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))  # Render sets PORT env variable automatically
     uvicorn.run(app, host="0.0.0.0", port=port)
