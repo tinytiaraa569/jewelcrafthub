@@ -145,6 +145,10 @@ def extract_combined_vector(file_bytes):
     except Exception as e:
         print(f"❌ Error processing uploaded image: {e}")
         return None
+            
+@app.get("/")
+def root():
+    return {"message": "Similarity Engine is running 🚀"}
 
 @app.post("/match")
 async def match(file: UploadFile = File(...)):
