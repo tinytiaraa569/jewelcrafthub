@@ -32,7 +32,7 @@ const Homesec2 = () => {
       whileInView="show"
       viewport={{ once: true }}
       variants={containerVariants}
-      className="w-full py-16 px-4 text-center font-poppins"
+      className="w-full py-16 px-4 text-center font-poppins bg-white"
     >
       <motion.h1
         variants={fadeInUpVariant}

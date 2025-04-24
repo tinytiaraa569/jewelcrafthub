@@ -40,6 +40,7 @@ import PrivacyPolicy from './Policy/PrivacyPolicy'
 import Termsandcondition from './Policy/Termsandcondition'
 import NotFound from './NotFound/NotFound'
 import ScrollToTopButton from './ScrollToTopBottom/ScrollToTopButton'
+import ActivateAccount from './ActivateAccount/ActivateAccount'
 // import HeroSection from './Navbar/HeroSection'
 // import './App.css'
 
@@ -251,6 +252,9 @@ function App() {
              </AdminProtectedRoutes>
           }
         />
+
+    <Route path="/activation/:token" element={<ActivateAccount />} />
+
 
     <Route path="*" element={<NotFound />} />
 

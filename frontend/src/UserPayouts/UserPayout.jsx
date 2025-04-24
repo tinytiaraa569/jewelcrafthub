@@ -563,7 +563,7 @@ const fetchUserPoints = async () => {
 
       {
         isWithdrawablePopoverOpen && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className=" h-full fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="relative w-full max-w-lg bg-white dark:bg-neutral-900 border dark:border-neutral-800 rounded-lg shadow-xl p-6">
         <button  className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 dark:text-gray-400">
           <X onClick={handleWithdrawableClosePopover} className="w-6 h-6" />
@@ -678,13 +678,13 @@ const fetchUserPoints = async () => {
           )}
 
           {/* Textbox for amount */}
-          <div className="mt-4">
+          <div className="mt-5">
             <Label className="font-medium">Enter Withdrawal Credits</Label>
             <Input
               {...register("amount", { required: true, min: 1 })}
               type="number"
               placeholder="Enter Credits"
-              className="w-full mt-2 !bg-neutral-700"
+              className="w-full mt-2 dark:bg-neutral-700"
             />
           </div>
 
@@ -706,51 +706,51 @@ const fetchUserPoints = async () => {
 
       
 
-<div className="space-y-8 ">
-  <Card className="rounded-2xl shadow-md border border-border dark:border-zinc-700">
-    <CardContent className='py-4'>
-      <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">Your Withdrawal Requests</h2>
+    <div className="space-y-8 ">
+      <Card className="rounded-2xl shadow-md border border-border dark:border-zinc-700">
+        <CardContent className='py-4'>
+          <h2 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">Your Withdrawal Requests</h2>
 
-      {withdrawals.length === 0 ? (
-        <p className="text-muted-foreground text-center">No withdrawal requests found.</p>
-      ) : (
-        <div className="overflow-x-auto rounded-xl">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-muted dark:bg-zinc-800">
-                <TableHead className="text-gray-600 dark:text-gray-300">Date</TableHead>
-                <TableHead className="text-gray-600 dark:text-gray-300">Credits</TableHead>
-                <TableHead className="text-gray-600 dark:text-gray-300">Method</TableHead>
-                <TableHead className="text-gray-600 dark:text-gray-300">Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {withdrawals.map((withdrawal) => (
-                <TableRow key={withdrawal._id} className="even:bg-muted/50 dark:even:bg-zinc-900 hover:bg-muted transition-colors">
-                  <TableCell className="text-sm text-gray-800 dark:text-gray-100">
-                    {new Date(withdrawal.createdAt).toLocaleDateString()}
-                  </TableCell>
-                  <TableCell className="text-sm font-medium text-blue-600 dark:text-blue-400">
-                    {withdrawal.amount}
-                  </TableCell>
-                  <TableCell className="text-sm capitalize text-gray-700 dark:text-gray-200">
-                    {withdrawal.method}
-                  </TableCell>
-                  <TableCell>
-                    <div className={`flex items-center gap-2 text-sm font-medium ${getStatusColor(withdrawal.status)}`}>
-                      {getStatusIcon(withdrawal.status)}
-                      {withdrawal.status || "Pending"}
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
-      )}
-    </CardContent>
-  </Card>
-</div>
+          {withdrawals.length === 0 ? (
+            <p className="text-muted-foreground text-center">No withdrawal requests found.</p>
+          ) : (
+            <div className="overflow-x-auto rounded-xl">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-muted dark:bg-zinc-800">
+                    <TableHead className="text-gray-600 dark:text-gray-300">Date</TableHead>
+                    <TableHead className="text-gray-600 dark:text-gray-300">Credits</TableHead>
+                    <TableHead className="text-gray-600 dark:text-gray-300">Method</TableHead>
+                    <TableHead className="text-gray-600 dark:text-gray-300">Status</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {withdrawals.map((withdrawal) => (
+                    <TableRow key={withdrawal._id} className="even:bg-muted/50 dark:even:bg-zinc-900 hover:bg-muted transition-colors">
+                      <TableCell className="text-sm text-gray-800 dark:text-gray-100">
+                        {new Date(withdrawal.createdAt).toLocaleDateString()}
+                      </TableCell>
+                      <TableCell className="text-sm font-medium text-blue-600 dark:text-blue-400">
+                        {withdrawal.amount}
+                      </TableCell>
+                      <TableCell className="text-sm capitalize text-gray-700 dark:text-gray-200">
+                        {withdrawal.method}
+                      </TableCell>
+                      <TableCell>
+                        <div className={`flex items-center gap-2 text-sm font-medium ${getStatusColor(withdrawal.status)}`}>
+                          {getStatusIcon(withdrawal.status)}
+                          {withdrawal.status || "Pending"}
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
 
 
 

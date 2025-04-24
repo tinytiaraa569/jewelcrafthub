@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Aboutsec4 = () => {
   const navigate = useNavigate();
   return (
-    <div className="py-20 px-6 md:px-12 font-poppins overflow-hidden">
+    <div className="py-20 px-6 md:px-12 font-poppins overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
 
         {/* Left: Overlapping Images */}
@@ -49,7 +49,7 @@ const Aboutsec4 = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-6">Our Promise</h1>
+          <h1 className="text-black text-3xl md:text-4xl font-bold mb-6">Our Promise</h1>
 
           <p className="text-lg text-gray-700 mb-6">
             We exist to support and elevate emerging talent through meaningful collaboration.

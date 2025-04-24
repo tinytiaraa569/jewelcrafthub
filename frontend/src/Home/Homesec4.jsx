@@ -247,7 +247,7 @@ const Homesec4 = () => {
   return (
     <div
     ref={containerRef}
-    className="w-full bg-white dark:bg-neutral-950 font-sans md:px-10 "
+    className="w-full bg-white  font-sans md:px-10 "
     >
       
       <div className="flex flex-col items-center   mx-auto pt-20 pb-10 px-4 md:px-8 lg:px-10">
@@ -255,7 +255,7 @@ const Homesec4 = () => {
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className=" text-lg md:text-4xl mb-1  text-black font-bold dark:text-white max-w-4xl"
+          className=" text-lg md:text-4xl mb-1  text-black font-bold  max-w-4xl"
         >
           How It Works
         </motion.h2>
@@ -263,7 +263,7 @@ const Homesec4 = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center md:text-lg text-neutral-600 dark:text-neutral-300 max-w-3xl"
+          className="text-center md:text-lg text-neutral-600  max-w-3xl"
         >
           Follow these easy steps to start designing and earning with real-world jewelry brands.
         </motion.p>
@@ -319,12 +319,12 @@ const Homesec4 = () => {
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 className="h-10 w-10 rounded-full bg-gradient-to-br from-black to-gray-500 shadow-md flex items-center justify-center"
               >
-                <div className="h-4 w-4 rounded-full bg-white border border-neutral-300 dark:border-neutral-700" />
+                <div className="h-4 w-4 rounded-full bg-white border border-neutral-300 " />
               </motion.div>
-              <p className="mt-4 text-sm md:text-base font-semibold text-gray-700 dark:text-gray-300">
+              <p className="mt-4 text-sm md:text-base font-semibold text-gray-700 ">
                 {item.stepno}
               </p>
-              <h3 className="mt-2 text-lg md:text-2xl font-semibold text-neutral-700 dark:text-neutral-300">
+              <h3 className="mt-2 text-lg md:text-2xl font-semibold text-neutral-700 ">
                 {item.title}
               </h3>
             </motion.div>
@@ -344,10 +344,10 @@ const Homesec4 = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="md:w-1/3 w-full px-4"
             >
-              <h1 className="text-xl font-bold text-black dark:text-white">
+              <h1 className="text-xl font-bold text-black ">
                 {item.title}
               </h1>
-              <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-300 mb-4">
+              <p className="text-base md:text-lg text-neutral-600  mb-4">
                 {item.content}
               </p>
 

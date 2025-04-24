@@ -63,21 +63,39 @@ const Homesec3 = () => {
 
           <div className="space-y-6">
             <motion.div variants={textVariants}>
-              <h1 className="text-4xl md:text-5xl font-[700] mt-5">
+              <h1 className="text-4xl md:text-5xl font-[700] mt-5 text-black">
                 Your skills deserve 
               </h1>
-              <h1 className="text-4xl md:text-5xl font-[700]">
+              <h1 className="text-4xl md:text-5xl font-[700] text-black">
                 more than a 
               </h1>
-              <h1 className="text-4xl md:text-5xl font-[700]">sketchbook.</h1>
+              <h1 className="text-4xl md:text-5xl font-[700] text-black">sketchbook.</h1>
             </motion.div>
 
             <motion.p 
               className="text-base md:text-lg text-gray-700 mt-4 max-w-lg"
               variants={textVariants}
             >
-              Our next-generation mobile application offers a seamless and secure platform for making payments, managing accounts, and monitoring transactions.
+             Turn your creativity into income by submitting your original sketches. Every design is a new opportunity - showcase your talent , get discovered , and get paid.
             </motion.p>
+{/* 
+            <motion.div
+      variants={listVariants}
+      initial="hidden"
+      animate="show"
+      className="mt-4 space-y-3 text-black font-medium text-base md:text-lg"
+    >
+      {["No middlemen", "Fair recognition", "Monthly payouts"].map((text, index) => (
+        <motion.div
+          key={index}
+          variants={itemVariants}
+          className="flex items-center gap-2"
+        >
+          <CheckCircle className="w-5 h-5 text-green-600" /> {/* Icon */}
+          {/* <span>{text}</span>
+        </motion.div>
+      ))}
+    </motion.div> */} 
 
             <motion.button 
               onClick={() => navigate("/auth")}

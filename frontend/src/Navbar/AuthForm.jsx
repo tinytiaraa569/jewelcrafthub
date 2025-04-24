@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useTheme } from "@/components/ui/ThemeProvider";
 import { backendurl } from "@/server";
 import { toast } from "sonner";
-import { CheckCircle, UserPlus } from "lucide-react";
+import { CheckCircle, Loader2, UserPlus } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { verifyAuth } from "@/redux/slices/authSlice";
@@ -18,6 +18,7 @@ import { createAdminNotification } from "@/redux/action/adminNotificationActions
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Loading state
   const { theme } = useTheme(); // Get the current theme (dark/light)
   const { token } = useSelector((state) => state.auth);
   const {
@@ -43,6 +44,7 @@ const AuthForm = () => {
       toast.error("You must accept the Terms & Conditions and Privacy Policy to sign up.");
       return;
     }
+    setIsLoading(true); // Start loading
   
   try {
     const response = await fetch(`${backendurl}${endpoint}`, {
@@ -68,12 +70,12 @@ const AuthForm = () => {
           {/* Text & Description in One Div */}
           <div>
             <span className="font-medium">
-              {isLogin ? "Login Successful" : "Signup Successful"}
+              {isLogin ? "Login Successful" : "Account Created"}
             </span>
             <p className="text-sm text-gray-500">
               {isLogin
                 ? "You have successfully logged in!"
-                : "Your account has been created."}
+                : "Please check your email to activate your account."}
             </p>
           </div>
         </div>,
@@ -86,7 +88,7 @@ const AuthForm = () => {
         dispatch(verifyAuth({ token: result.token, user: result.user }));  // ✅ Save in Redux
         localStorage.setItem("token", result.token);
         window.location.reload()
-        navigate("/user-dashboard"); 
+        navigate("/user-profile"); 
       } else {
         // If signup, switch to login form
          reset(); // Reset form fields
@@ -108,6 +110,8 @@ const AuthForm = () => {
     }
   } catch (error) {
     console.error("Error:", error);
+  } finally {
+    setIsLoading(false); // Stop loading
   }
   };
 
@@ -267,10 +271,18 @@ const AuthForm = () => {
            
 
   
-            <motion.div whileHover={{ scale: 1.05 }} >
-              <Button type="submit" className="w-full mt-1">
-                {isLogin ? "Login" : "Sign Up"}
-              </Button>
+            <motion.div whileHover={{ scale: 1.01 }} >
+            <Button type="submit" className="cursor-pointer w-full mt-1" disabled={isLoading}>
+              {isLoading ? (
+                <div className="flex items-center justify-center gap-2">
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Processing...</span>
+                </div>
+              ) : (
+                isLogin ? "Login" : "Sign Up"
+              )}
+            </Button>
+
             </motion.div>
           </motion.form>
 

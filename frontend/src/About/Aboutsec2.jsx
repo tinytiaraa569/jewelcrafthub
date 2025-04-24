@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const Aboutsec2 = () => {
   return (
-    <div className="flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-center py-16 px-6 md:px-14 font-poppins">
+    <div className=" flex flex-col lg:flex-row max-w-7xl mx-auto items-center justify-center py-16 px-6 md:px-14 font-poppins ">
       {/* Left Side */}
       <div className="left w-full lg:w-1/3 text-left mb-12 lg:mb-0">
         <motion.div 

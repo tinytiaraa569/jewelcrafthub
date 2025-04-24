@@ -10,7 +10,7 @@ const About = () => {
       window.scrollTo(0, 0);
     }, []);
   return (
-    <div>
+    <div >
        <Aboutsec1 />
        <Aboutsec2 />
        <div className="bg-[#ecf3f2] bg-gradient-to-br from-[#ecf3f2] via-white to-[#ecf3f2]">
