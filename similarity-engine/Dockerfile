@@ -7,18 +7,20 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     && apt-get clean
 
-# Set working directory
+# Set working directory in container
 WORKDIR /app
 
-# Copy requirements and install them
+# Copy requirements.txt from similarity-engine folder
 COPY similarity-engine/requirements.txt .
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all app code
-COPY similarity-engine .
+# Copy all code from similarity-engine folder
+COPY similarity-engine/ .
 
 # Expose FastAPI port
 EXPOSE 5001
 
-# Start FastAPI app
+# Run FastAPI app
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5001"]
