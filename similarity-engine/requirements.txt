@@ -4,8 +4,5 @@ uvicorn
 tensorflow
 python-multipart
 pillow
-<<<<<<< HEAD
 faiss-cpu
-=======
-faiss-cpu
->>>>>>> 5a539732b8ca17b600d33964d573fe1aa498c4ec
+
