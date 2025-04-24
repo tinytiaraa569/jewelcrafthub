@@ -246,65 +246,65 @@ const onSubmit = async (data) => {
   }
   
 
-  // try {
-  //   const base64Files = await Promise.all(
-  //     uploadedFiles.map(async (file) => ({
-  //       name: file.name,
-  //       type: file.type,
-  //       size: file.size,
-  //       content: await convertFileToBase64(file),
-  //     }))
-  //   );
+  try {
+    const base64Files = await Promise.all(
+      uploadedFiles.map(async (file) => ({
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        content: await convertFileToBase64(file),
+      }))
+    );
 
-  //   const designData = {
-  //     title: data.designTitle,
-  //     type: data.designType,
-  //     category: category,
-  //     files: base64Files,
-  //     brief: selectedBrief,
-  //   };
+    const designData = {
+      title: data.designTitle,
+      type: data.designType,
+      category: category,
+      files: base64Files,
+      brief: selectedBrief,
+    };
 
-  //   console.log(designData, "designData");
+    console.log(designData, "designData");
 
-  //   // Sending the request to the backend using Axios
-  //   const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
+    // Sending the request to the backend using Axios
+    const token = localStorage.getItem("token"); // Assuming token is stored in localStorage
 
-  //   const response = await axios.post(
-  //     `${backendurl}/userdesign/user-design/create`, // Adjust base URL as needed
-  //     designData,
-  //     {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`, // Sending token in Authorization header
-  //       },
-  //     }
-  //   );
+    const response = await axios.post(
+      `${backendurl}/userdesign/user-design/create`, // Adjust base URL as needed
+      designData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Sending token in Authorization header
+        },
+      }
+    );
 
-  //   if (response.status === 201) {
-  //     handleDesignClosePopover(); // Close the popover after success
-  //     fetchUserDesigns();
-  //     dispatch(
-  //       createNotification(
-  //         user?._id, 
-  //         "Design Uploaded",  // Updated Title
-  //         "Your design was uploaded successfully! We will review your design, and once approved, you will be notified.",  // Updated Message
-  //         "info"  // Icon or Status Indicator (unchanged)
-  //       )
-  //     );
-  //     toast.success("Design uploaded successfully!");
-  //     dispatch(
-  //       createAdminNotification(
-  //         user?._id,
-  //         "New Design Uploaded",
-  //         `${user?.name || "A user"} uploaded a new design for review.`,
-  //         "info"
-  //       )
-  //     );
-  //   }
-  // } catch (error) {
-  //   console.error("Error uploading design:", error);
-  //   toast.error(error.response?.data?.error || "Failed to upload design.");
-  // }
+    if (response.status === 201) {
+      handleDesignClosePopover(); // Close the popover after success
+      fetchUserDesigns();
+      dispatch(
+        createNotification(
+          user?._id, 
+          "Design Uploaded",  // Updated Title
+          "Your design was uploaded successfully! We will review your design, and once approved, you will be notified.",  // Updated Message
+          "info"  // Icon or Status Indicator (unchanged)
+        )
+      );
+      toast.success("Design uploaded successfully!");
+      dispatch(
+        createAdminNotification(
+          user?._id,
+          "New Design Uploaded",
+          `${user?.name || "A user"} uploaded a new design for review.`,
+          "info"
+        )
+      );
+    }
+  } catch (error) {
+    console.error("Error uploading design:", error);
+    toast.error(error.response?.data?.error || "Failed to upload design.");
+  }
 };
 
 
