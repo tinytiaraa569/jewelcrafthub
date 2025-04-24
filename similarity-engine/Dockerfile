@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Install OS dependencies
+# Install OS-level dependencies
 RUN apt-get update && apt-get install -y \
     gcc \
     build-essential \
@@ -11,14 +11,14 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 # Copy requirements and install them
-COPY image-similarity/requirements.txt .
+COPY similarity-engine/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy your app code
-COPY image-similarity .
+# Copy all app code
+COPY similarity-engine .
 
 # Expose FastAPI port
 EXPOSE 5001
 
-# Start the FastAPI app
+# Start FastAPI app
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5001"]
