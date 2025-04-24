@@ -1,6 +1,7 @@
+numpy
 fastapi
 uvicorn
-faiss-cpu
-pillow
 tensorflow
-numpy
+python-multipart
+pillow
+faiss-cpu

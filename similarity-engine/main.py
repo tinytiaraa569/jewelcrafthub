@@ -104,6 +104,7 @@ from tensorflow.keras.applications import ResNet50
 import uvicorn
 import pickle
 import io
+import os
 
 app = FastAPI()
 
@@ -146,6 +147,10 @@ def extract_combined_vector(file_bytes):
         print(f"❌ Error processing uploaded image: {e}")
         return None
 
+@app.get("/")
+def root():
+    return {"message": "Similarity Engine is running 🚀"}
+
 @app.post("/match")
 async def match(file: UploadFile = File(...)):
     content = await file.read()
@@ -187,5 +192,8 @@ async def match(file: UploadFile = File(...)):
 
     return {"matches": results}
 
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="0.0.0.0", port=5001)
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=5001)
+    port = int(os.environ.get("PORT", 8000))  # Render sets PORT env variable automatically
+    uvicorn.run(app, host="0.0.0.0", port=port)

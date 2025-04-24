@@ -1,15 +1,20 @@
+# Use a specific base image
 FROM python:3.10-slim
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY . /app
+# Copy the requirements.txt file
+COPY requirements.txt .
 
-# Install system packages needed for image and FAISS support
-RUN apt-get update && \
-    apt-get install -y libgl1 && \
-    pip install --upgrade pip && \
-    pip install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 5001
+# Copy all code from the current directory (similarity-engine)
+COPY . .
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5001"]
+# Expose the FastAPI port
+EXPOSE 8000
+
+# Command to run the FastAPI app
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

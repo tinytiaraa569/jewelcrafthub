@@ -162,7 +162,7 @@ router.post("/check-similarity", async (req, res) => {
     form.append("file", buffer, "test.jpg");
 
     // Send to similarity engine using fetch
-    const similarityRes = await fetch("http://localhost:5001/match", {
+    const similarityRes = await fetch("https://jewelcrafthub.onrender.com/match", {
       method: "POST",
       headers: form.getHeaders(),
       body: form,
