@@ -18,8 +18,7 @@ app.use(
   })
 );
 
-// Handling OPTIONS preflight request globally
-app.options("*", cors());
+
 
 app.use(cookieParser());
 
