@@ -188,7 +188,6 @@ router.post("/admin/withdrawal-approve", protectAdmin, async (req, res) => {
   });
 
 router.patch("/withdrawals/:id/update-payment", protectAdmin, async (req, res) => {
-
   try {
     const { id } = req.params; // withdrawal id
     const { amountPaid, paymentDoneBy, referenceNumber } = req.body;
