@@ -94,8 +94,6 @@ router.get("/user/:userId/get-withdrawals", async (req, res) => {
   });
   
 
-
-
 // Get all withdrawal requests (for admin)
 router.get("/admin/get-all-withdrawals", protectAdmin ,async (req, res) => {
     try {
@@ -188,5 +186,41 @@ router.post("/admin/withdrawal-approve", protectAdmin, async (req, res) => {
       return res.status(500).json({ message: "Internal server error" });
     }
   });
+
+router.patch("/withdrawals/:id/update-payment", protectAdmin, async (req, res) => {
+
+  try {
+    const { id } = req.params; // withdrawal id
+    const { amountPaid, paymentDoneBy, referenceNumber } = req.body;
+
+    if (!amountPaid || !paymentDoneBy || !referenceNumber) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+    const withdrawal = await Withdrawal.findById(id);
+
+    if (!withdrawal) {
+      return res.status(404).json({ message: 'Withdrawal request not found' });
+    }
+
+    // Only allow update if status is approved
+    if (withdrawal.status !== 'approved') {
+      return res.status(400).json({ message: 'Only approved withdrawals can have payment info updated' });
+    }
+
+    withdrawal.amountPaid = amountPaid;
+    withdrawal.paymentDoneBy = paymentDoneBy;
+    withdrawal.referenceNumber = referenceNumber;
+    withdrawal.updatedAt = Date.now();
+
+    await withdrawal.save();
+
+    res.status(200).json({ message: 'Payment details updated successfully', withdrawal });
+  } catch (error) {
+    console.error('Error updating payment info:', error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
 
 module.exports = router;

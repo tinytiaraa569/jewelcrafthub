@@ -58,6 +58,10 @@ const withdrawal = require("./controllers/withdrawal")
 const usersupport = require("./controllers/supportController")
 
 
+//analytics
+const analytics = require("./controllers/analyticscontroller")
+
+
 //  Define API routes
 app.use("/api/auth", auth);
 app.use("/api/notification", usernotification);
@@ -76,6 +80,8 @@ app.use("/api/category", category);
 app.use("/api/withdrawal", withdrawal);
 app.use("/api/usersupport", usersupport);
 
+
+app.use("/api/analytics", analytics);
 
 
 

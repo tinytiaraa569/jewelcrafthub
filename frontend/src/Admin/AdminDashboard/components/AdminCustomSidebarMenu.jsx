@@ -49,7 +49,7 @@ const menuItems = [
   { title: "Withdrawals", icon: BanknoteIcon   , url: "/admin-withdrawals" },
   { title: "Team", icon: UserCogIcon, url: "/admin-team" },
   { title: "Support", icon: HelpCircleIcon, url: "/admin-support" },
-  { title: "Analytics", icon: BarChartIcon, url: "#" },
+  { title: "Analytics", icon: BarChartIcon, url: "/admin-analytics" },
 ];
 
 const supportItems = [

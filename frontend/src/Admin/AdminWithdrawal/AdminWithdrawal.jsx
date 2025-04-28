@@ -34,6 +34,43 @@ const AdminWithdrawal = () => {
 
   const { user } = useSelector((state) => state.auth);
 
+  const [amountPaid, setAmountPaid] = useState("");
+  const [paymentDoneBy, setPaymentDoneBy] = useState("");
+  const [referenceNumber, setReferenceNumber] = useState("");
+  
+  const handleUpdatePayment = async () => {
+    if (!selectedWithdrawal) {
+      console.error("No withdrawal selected.");
+      return;
+    }
+
+    try {
+      const response = await axios.patch(
+        `${backendurl}/withdrawal/withdrawals/${selectedWithdrawal._id}/update-payment`,
+        {
+          amountPaid,
+          paymentDoneBy,
+          referenceNumber,
+        },
+        { withCredentials: true }
+      );
+
+      toast.success("Payment related information updated successfully");
+
+      // Close the dialog after success
+      setIsDialogOpen(false);
+      setAmountPaid("")
+      setPaymentDoneBy("")
+      setReferenceNumber("")
+
+
+      // Refresh the withdrawal list
+      fetchWithdrawals();
+    } catch (error) {
+      console.error("Error updating payment:", error.response?.data || error.message);
+    }
+  };
+
   const fetchWithdrawals = async () => {
     try {
       const response = await axios.get(
@@ -55,6 +92,11 @@ const AdminWithdrawal = () => {
     setIsDialogOpen(true);
     setIsApprovalMode(false);
     setConversionRate("");
+
+    // Pre-fill the payment fields if they exist, otherwise empty
+    setAmountPaid(withdrawal.amountPaid || "");
+    setPaymentDoneBy(withdrawal.paymentDoneBy || "");
+    setReferenceNumber(withdrawal.referenceNumber || "");
   };
 
   const closeDialog = () => {
@@ -237,7 +279,7 @@ const AdminWithdrawal = () => {
 
       {selectedWithdrawal && (
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogContent className="bg-white dark:bg-neutral-900 p-6 rounded-xl max-w-lg w-full border border-gray-300 dark:border-neutral-700 shadow-lg">
+            <DialogContent className="max-h-[85vh] overflow-y-auto  scrollbar-hidden bg-white dark:bg-neutral-900 p-6 rounded-xl max-w-xl w-full border border-gray-300 dark:border-neutral-700 shadow-lg">
             <DialogHeader>
                 <DialogTitle className="text-xl font-bold text-gray-900 dark:text-white">
                 Withdrawal Details
@@ -312,6 +354,66 @@ const AdminWithdrawal = () => {
                 </p>
               </div>
             )}
+
+            {selectedWithdrawal && selectedWithdrawal.status === "approved" && (
+                    <div className="mt-2 space-y-4">
+                      {/* Amount Paid Input */}
+                      <div>
+                        <label htmlFor="amountPaid" className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                          Amount Paid
+                        </label>
+                        <Input
+                          id="amountPaid"
+                          type="number"
+                          placeholder="Enter the paid amount"
+                          value={amountPaid}
+                          onChange={(e) => setAmountPaid(e.target.value)}
+                          className="mt-2 border-gray-300 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white"
+                        />
+                      </div>
+
+                      {/* Payment Done By Input */}
+                      <div>
+                        <label htmlFor="paymentDoneBy" className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                          Payment Done By
+                        </label>
+                        <Input
+                          id="paymentDoneBy"
+                          type="text"
+                          placeholder="e.g., Paytm, Bank Transfer, UPI"
+                          value={paymentDoneBy}
+                          onChange={(e) => setPaymentDoneBy(e.target.value)}
+                          className="mt-2 border-gray-300 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white"
+                        />
+                      </div>
+
+                      {/* Reference Number Input */}
+                      <div>
+                        <label htmlFor="referenceNumber" className="text-sm font-medium text-gray-800 dark:text-gray-200">
+                          Reference Number
+                        </label>
+                        <Input
+                          id="referenceNumber"
+                          type="text"
+                          placeholder="Enter transaction reference number"
+                          value={referenceNumber}
+                          onChange={(e) => setReferenceNumber(e.target.value)}
+                          className="mt-2 border-gray-300 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white"
+                        />
+                      </div>
+
+                      {/* Update Button */}
+                      <Button
+                        onClick={handleUpdatePayment}
+                        className="w-full cursor-pointer"
+                        disabled={!amountPaid || !paymentDoneBy || !referenceNumber}
+                      >
+                        Update Payment
+                      </Button>
+                    </div>
+                  )}
+
+
 
 
 

@@ -134,7 +134,7 @@ const Homesec3 = () => {
               transition={{ duration: 0.4, ease: 'easeInOut' }}
             >
               <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: item.iconBg }}>
-                <span className="text-2xl"><FaShieldAlt /></span>
+                <span className="text-2xl text-black"><FaShieldAlt /></span>
               </div>
               <h4 className={`text-lg font-[700] ${item.textColor}`}>{item.text}</h4>
             </motion.div>

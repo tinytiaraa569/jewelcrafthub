@@ -40,6 +40,20 @@ const withdrawalSchema = new mongoose.Schema({
     type: Number,
     default: null,
   },
+
+  amountPaid: {
+    type: Number,
+    default: null,
+  },
+  paymentDoneBy: {
+    type: String,
+    default: '',
+  },
+  referenceNumber: {
+    type: String,
+    default: '',
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,

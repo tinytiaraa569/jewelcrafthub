@@ -206,9 +206,17 @@ export function AdminSidebarHeader() {
                         <p className="text-sm text-gray-700 dark:text-gray-300">{notification.message}</p>
                         <span className="text-xs text-gray-500 dark:text-gray-400">
                           {notification.createdAt
-                            ? new Date(notification.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+                            ? new Date(notification.createdAt).toLocaleString([], { 
+                                day: "2-digit", 
+                                month: "short", 
+                                year: "numeric", 
+                                hour: "2-digit", 
+                                minute: "2-digit",
+                                hour12: true
+                              })
                             : "Date not available"}
                         </span>
+
                       </div>
                     </motion.li>
                   ))}

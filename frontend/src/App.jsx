@@ -41,6 +41,7 @@ import Termsandcondition from './Policy/Termsandcondition'
 import NotFound from './NotFound/NotFound'
 import ScrollToTopButton from './ScrollToTopBottom/ScrollToTopButton'
 import ActivateAccount from './ActivateAccount/ActivateAccount'
+import AdminAnalyticsMain from './Admin/AdminAnalytics/AdminAnalyticsMain'
 // import HeroSection from './Navbar/HeroSection'
 // import './App.css'
 
@@ -53,7 +54,7 @@ function App() {
     dispatch(checkAdminAuth())
   }, [dispatch]);
 
-  const hideNavbarPaths = ['/user-dashboard','/user-designupload' , '/user-support' , '/user-profile' ,"/user-portfolio" ,'/user-payouts' ,'/design-brief' ,'/admin-dashboard' ,'/admin-profile' , '/admin-allusers' ,'/admin-briefs' ,'/admin-category','/admin-team' ,'/admin-signup','/admin-all-designs','/admin-withdrawals' ,'/admin-support'];
+  const hideNavbarPaths = ['/user-dashboard','/user-designupload' , '/user-support' , '/user-profile' ,"/user-portfolio" ,'/user-payouts' ,'/design-brief' ,'/admin-dashboard' ,'/admin-profile' , '/admin-allusers' ,'/admin-briefs' ,'/admin-category','/admin-team' ,'/admin-signup','/admin-all-designs','/admin-withdrawals' ,'/admin-support', '/admin-analytics'];
 
   return (
     <>
@@ -249,6 +250,15 @@ function App() {
           element={
             <AdminProtectedRoutes>
               <AdminSupportMain />
+             </AdminProtectedRoutes>
+          }
+        />
+
+        <Route
+          path="/admin-analytics"
+          element={
+            <AdminProtectedRoutes>
+              <AdminAnalyticsMain />
              </AdminProtectedRoutes>
           }
         />
