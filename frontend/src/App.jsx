@@ -54,7 +54,7 @@ function App() {
     dispatch(checkAdminAuth())
   }, [dispatch]);
 
-  const hideNavbarPaths = ['/user-dashboard','/user-designupload' , '/user-support' , '/user-profile' ,"/user-portfolio" ,'/user-payouts' ,'/design-brief' ,'/admin-dashboard' ,'/admin-profile' , '/admin-allusers' ,'/admin-briefs' ,'/admin-category','/admin-team' ,'/admin-signup','/admin-all-designs','/admin-withdrawals' ,'/admin-support', '/admin-analytics'];
+  const hideNavbarPaths = ['/user-dashboard' , '/user-designupload' , '/user-support' , '/user-profile' ,"/user-portfolio" ,'/user-payouts' ,'/design-brief' ,'/admin-dashboard' ,'/admin-profile' , '/admin-allusers' ,'/admin-briefs' ,'/admin-category','/admin-team' ,'/admin-signup','/admin-all-designs','/admin-withdrawals' ,'/admin-support', '/admin-analytics'];
 
   return (
     <>
