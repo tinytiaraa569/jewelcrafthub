@@ -8,7 +8,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# dotenv environment variables
+# dotenv environment variables s
 .env
 .env.local
 .env.*.local
