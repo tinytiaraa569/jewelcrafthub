@@ -10,6 +10,15 @@ connectDB();
 
 const app = express();
 
+//  Enable CORS with specific frontend origin and credentials
+app.use(
+  cors({
+    origin: "https://jewelcrafthub.vercel.app",  // Allow only your frontend
+    credentials: true,                // Allow cookies & auth headers
+  })
+);
+
+
 app.use(cookieParser());
 
 //  Configure JSON and URL-encoded body parsers with increased limits
@@ -19,13 +28,6 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 //  Serve static files from the "uploads" directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-//  Enable CORS with specific frontend origin and credentials
-app.use(
-  cors({
-    origin: "https://jewelcrafthub.vercel.app",  // Allow only your frontend
-    credentials: true,                // Allow cookies & auth headers
-  })
-);
 
 // Import route controllers
 const auth = require("./controllers/authController");
