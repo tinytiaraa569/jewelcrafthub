@@ -20,6 +20,7 @@ Thumbs.db
 # Optional: Ignore build outputs (if using TypeScript or Babel)
 dist/
 build/
+uploads/
 
 # Optional: Ignore editor configs
 .vscode/
